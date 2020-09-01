@@ -1,0 +1,21 @@
+ 
+version: '2'
+
+services:
+
+  db:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes: 
+      - ./db:/var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: thePassword
+      MYSQL_DATABASE: playstoreDb
+    ports:
+      - 3306:3306
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8081
